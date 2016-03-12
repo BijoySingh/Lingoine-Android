@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00000000</color>
+    <color name="primaryText">#DE000000</color>
+    <color name="secondaryText">#DA000000</color>
+    <color name="tertiaryText">#99000000</color>
+    <color name="hintText">#65000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="whiteHint">#DAFFFFFF</color>
+
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#1976D2</color>
+    <color name="colorAccentDark">#1565C0</color>
+
+    <color name="toolbarSeparator">#00000000</color>
+</resources>
