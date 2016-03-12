@@ -7,4 +7,8 @@ package com.tch.lingoine.server;
 public class AccessIds {
     public static final Integer SERVER_LOGIN = 0;
     public static final Integer ALL_LANGUAGES = 1;
+    public static final Integer SET_LANGUAGE_KNOWN = 2;
+    public static final Integer SET_LANGUAGE_PROFICIENT = 3;
+    public static final Integer SET_LANGUAGE_LEARNING = 4;
+
 }

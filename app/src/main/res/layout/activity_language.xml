@@ -8,12 +8,37 @@
     tools:context="com.tch.lingoine.activities.LanguageChooser">
 
     <include layout="@layout/toolbar"/>
-    <LinearLayout
-        android:id="@+id/languages"
+
+    <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:textSize="18sp"
+        android:textColor="@color/hintText"
+        android:padding="8dp"
+        />
 
-    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/languages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+        </LinearLayout>
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/next_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:background="@color/colorAccent"
+        android:padding="16dp"
+        android:text="NEXT"/>
 </LinearLayout>

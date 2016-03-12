@@ -16,4 +16,16 @@ public class Links {
     public static String getLanguages() {
         return getBase() + "api/language/";
     }
+
+    public static String setKnownLanguages() {
+        return getBase() + "api/language/";
+    }
+
+    public static String setProficientLanguages() {
+        return getBase() + "api/language/";
+    }
+
+    public static String setLearningLanguages() {
+        return getBase() + "api/language/";
+    }
 }

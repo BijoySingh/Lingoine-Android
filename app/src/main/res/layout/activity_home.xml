@@ -8,4 +8,5 @@
     tools:context="com.tch.lingoine.activities.LanguageChooser">
 
     <include layout="@layout/toolbar"/>
+
 </LinearLayout>

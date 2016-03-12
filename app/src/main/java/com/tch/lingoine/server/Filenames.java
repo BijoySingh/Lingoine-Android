@@ -8,4 +8,8 @@ public class Filenames {
     public static String getDefault() {
         return "lingoine.txt";
     }
+
+    public static String getLanguages() {
+        return "languages.txt";
+    }
 }

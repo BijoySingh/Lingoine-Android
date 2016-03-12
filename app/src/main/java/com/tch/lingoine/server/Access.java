@@ -4,10 +4,10 @@ import android.content.Context;
 import android.util.Log;
 
 import com.android.volley.VolleyError;
-import com.github.bijoysingh.starter.Functions;
 import com.github.bijoysingh.starter.server.AccessItem;
 import com.github.bijoysingh.starter.server.AccessManager;
 import com.github.bijoysingh.starter.util.FileManager;
+import com.tch.lingoine.activities.LanguageChooser;
 import com.tch.lingoine.utils.Preferences;
 
 import org.json.JSONObject;
@@ -41,6 +41,9 @@ public class Access extends AccessManager {
         writeInFile(response, access);
 
         if (access.activity != null) {
+            if (access.type.equals(AccessIds.ALL_LANGUAGES)) {
+                ((LanguageChooser) access.activity).refreshView();
+            }
         }
     }
 
@@ -50,6 +53,11 @@ public class Access extends AccessManager {
         writeInFile(jsonObject.toString(), access);
 
         if (access.activity != null) {
+            if (access.type.equals(AccessIds.SET_LANGUAGE_KNOWN)
+                || access.type.equals(AccessIds.SET_LANGUAGE_LEARNING)
+                || access.type.equals(AccessIds.SET_LANGUAGE_PROFICIENT)) {
+                ((LanguageChooser) access.activity).handleResponse(jsonObject);
+            }
         }
     }
 
