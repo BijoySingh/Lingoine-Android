@@ -3,6 +3,7 @@ package com.tch.lingoine.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,8 @@ import com.tch.lingoine.R;
 import com.tch.lingoine.server.Access;
 import com.tch.lingoine.server.AccessIds;
 import com.tch.lingoine.server.Links;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,6 +45,7 @@ public class LoginActivity extends ActivityBase {
         password.setText(preferences.getPassword());
         setupButtons();
     }
+
 
     public void setupButtons() {
         login.setOnClickListener(new View.OnClickListener() {
@@ -74,9 +78,12 @@ public class LoginActivity extends ActivityBase {
             public void onClick(View view) {
                 Intent login = new Intent(context, SignupActivity.class);
                 startActivity(login);
-                finish();
             }
         });
+    }
+
+    public void handleResponse(JSONObject response) {
+        Log.d("LOGIN", response.toString());
     }
 
     public void startDialog() {
@@ -91,5 +98,12 @@ public class LoginActivity extends ActivityBase {
         Access access = new Access(context);
         access.send(new AccessItem(Links.getLogin(), null,
             AccessIds.SERVER_LOGIN, true).setActivity(this), authMap);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        username.setText(preferences.getCompleteUsername());
+        password.setText(preferences.getPassword());
     }
 }

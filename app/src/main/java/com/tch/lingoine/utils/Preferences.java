@@ -26,6 +26,7 @@ public class Preferences extends PreferenceManager {
         public static final String USERNAME = "USERNAME";
         public static final String PASSWORD = "PASSWORD";
         public static final String DOMAIN = "DOMAIN";
+        public static final String PHONE_NUMBER = "PHONE_NUMBER";
     }
 
     public void save(String userId, String username, String password, String domain) {
@@ -33,6 +34,14 @@ public class Preferences extends PreferenceManager {
         save(Keys.USERNAME, username);
         save(Keys.PASSWORD, password);
         save(Keys.DOMAIN, domain);
+    }
+
+    public void setPhoneNumber(String number) {
+        save(Keys.PHONE_NUMBER, number);
+    }
+
+    public String getPhoneNumber() {
+        return load(Keys.PHONE_NUMBER, "");
     }
 
     public String getUserId() {

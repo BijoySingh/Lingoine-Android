@@ -10,5 +10,8 @@ public class AccessIds {
     public static final Integer SET_LANGUAGE_KNOWN = 2;
     public static final Integer SET_LANGUAGE_PROFICIENT = 3;
     public static final Integer SET_LANGUAGE_LEARNING = 4;
+    public static final Integer GET_LANGUAGE_KNOWN = 5;
+    public static final Integer GET_LANGUAGE_PROFICIENT = 6;
+    public static final Integer GET_LANGUAGE_LEARNING = 7;
 
 }

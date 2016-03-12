@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,54 +24,93 @@ public class SignupActivity extends ActivityBase {
     Button signUp;
     EditText phoneNumber;
     EditText validation;
+    TextView country;
     String countryCode;
     LinearLayout userInformation;
+    LinearLayout validationContainer;
+    LinearLayout phoneContainer;
 
     TextView username;
     TextView password;
     TextView domain;
+    Integer state;
 
+    public static final String STATE = "STATE";
+    public static final Integer SIGN_UP = 0;
+    public static final Integer VALIDATION = 1;
+    public static final Integer USER_INFORMATION = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        state = getIntent().getIntExtra(STATE, SIGN_UP);
 
         setToolbar("SIGNUP FOR LINGOINE");
         signUp = (Button) findViewById(R.id.signup_button);
         phoneNumber = (EditText) findViewById(R.id.phone_number);
+        phoneNumber.setText(preferences.getPhoneNumber());
         validation = (EditText) findViewById(R.id.validation_code);
+        country = (TextView) findViewById(R.id.country_code);
         userInformation = (LinearLayout) findViewById(R.id.user_information);
-        userInformation.setVisibility(View.GONE);
+        validationContainer = (LinearLayout) findViewById(R.id.validation_container);
+        phoneContainer = (LinearLayout) findViewById(R.id.phone_number_container);
+        userInformation.setVisibility(View.INVISIBLE);
+        validationContainer.setVisibility(View.GONE);
 
         username = (TextView) findViewById(R.id.username);
         password = (TextView) findViewById(R.id.password);
         domain = (TextView) findViewById(R.id.domain);
 
         TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        countryCode = tm.getSimCountryIso();
+        countryCode = tm.getSimCountryIso().toUpperCase();
+        country.setText(countryCode);
 
-        setupSignUp();
+        setupView();
+    }
+
+    public void setupView() {
+        if (state.equals(SIGN_UP)) {
+            phoneContainer.setVisibility(View.VISIBLE);
+            validationContainer.setVisibility(View.GONE);
+            signUp.setText("REQUEST CODE");
+            setupSignUp();
+        } else if (state.equals(VALIDATION)) {
+            phoneNumber.setEnabled(false);
+            validationContainer.setVisibility(View.VISIBLE);
+            signUp.setText("VALIDATE");
+            setupValidation();
+        } else {
+            phoneContainer.setVisibility(View.GONE);
+            validationContainer.setVisibility(View.GONE);
+            userInformation.setVisibility(View.VISIBLE);
+            username.setText(preferences.getUsername());
+            password.setText(preferences.getPassword());
+            domain.setText(preferences.getDomain());
+            setupLogin();
+        }
     }
 
     public void setupSignUp() {
-        validation.setEnabled(false);
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                preferences.setPhoneNumber(phoneNumber.getText().toString());
                 Kandy.getProvisioning().requestCode(
                     KandyValidationMethoud.CALL,
                     phoneNumber.getText().toString(),
                     countryCode, new KandyResponseListener() {
                         @Override
                         public void onRequestFailed(int responseCode, String err) {
-                            Functions.makeToast(context, "Something went wrong," +
-                                " please try again later");
+                            Functions.makeToast(context, "Something went wrong. " + err);
                         }
 
                         @Override
                         public void onRequestSucceded() {
-                            setupValidation();
+                            Intent intent = new Intent(context, SignupActivity.class);
+                            intent.putExtra(STATE, VALIDATION);
+                            startActivity(intent);
+                            finish();
                         }
                     });
             }
@@ -78,9 +118,6 @@ public class SignupActivity extends ActivityBase {
     }
 
     public void setupValidation() {
-        phoneNumber.setEnabled(false);
-        validation.setEnabled(true);
-        signUp.setText("VALIDATE");
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,19 +128,16 @@ public class SignupActivity extends ActivityBase {
 
                         @Override
                         public void onRequestFailed(int responseCode, String err) {
-                            Functions.makeToast(context, "Something went wrong," +
-                                " please try again later");
+                            Log.d("VALIDATION", "Something went wrong. " + err);
                         }
 
                         @Override
                         public void onRequestSuccess(IKandyValidationResponse response) {
-                            userInformation.setVisibility(View.VISIBLE);
                             preferences.save(response.getUserId(), response.getUser(), response.getUserPassword(), response.getDomainName());
-
-                            username.setText(response.getUser());
-                            password.setText(response.getUserPassword());
-                            domain.setText(response.getDomainName());
-                            setupLogin();
+                            Intent intent = new Intent(context, SignupActivity.class);
+                            intent.putExtra(STATE, USER_INFORMATION);
+                            startActivity(intent);
+                            finish();
                         }
                     });
             }
@@ -115,8 +149,6 @@ public class SignupActivity extends ActivityBase {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent login = new Intent(context, LoginActivity.class);
-                startActivity(login);
                 finish();
             }
         });

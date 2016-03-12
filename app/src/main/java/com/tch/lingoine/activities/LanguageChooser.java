@@ -2,7 +2,6 @@ package com.tch.lingoine.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -101,7 +100,7 @@ public class LanguageChooser extends ActivityBase {
         List<LanguageItem> languageList = new ArrayList<>();
         languagesSelected = new HashSet<>();
         try {
-            String text = FileManager.read(context, Links.getLanguages());
+            String text = FileManager.read(context, Filenames.getLanguages());
             JSONObject json = new JSONObject(text);
             JSONArray array = json.getJSONArray("results");
             for (int position = 0; position < array.length(); position++) {
@@ -132,9 +131,10 @@ public class LanguageChooser extends ActivityBase {
     }
 
     public void sendInformation() {
-        String languagesToBeSent = TextUtils.join(",", languagesSelected);
+        String[] languagesArray = new String[languagesSelected.size()];
+        languagesSelected.toArray(languagesArray);
         Map<String, Object> map = new HashMap<>();
-        map.put("languages", languagesToBeSent);
+        map.put("languages", languagesArray);
 
         Access access = new Access(context);
         access.send(new AccessItem(getLink(), null, AccessIds.SET_LANGUAGE_KNOWN,

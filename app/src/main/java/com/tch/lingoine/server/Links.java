@@ -6,11 +6,11 @@ package com.tch.lingoine.server;
  */
 public class Links {
     public static String getBase() {
-        return "http://10.196.31.204/";
+        return "http://10.196.31.204:8000/";
     }
 
     public static String getLogin() {
-        return "";
+        return getBase() + "api/accounts/login/";
     }
 
     public static String getLanguages() {
@@ -18,14 +18,26 @@ public class Links {
     }
 
     public static String setKnownLanguages() {
-        return getBase() + "api/language/";
+        return getBase() + "api/user_language/set_know_languages/";
     }
 
     public static String setProficientLanguages() {
-        return getBase() + "api/language/";
+        return getBase() + "api/user_language/set_proficient_languages/";
     }
 
     public static String setLearningLanguages() {
-        return getBase() + "api/language/";
+        return getBase() + "api/user_language/set_learning_languages/";
+    }
+
+    public static String getKnownLanguages() {
+        return getBase() + "api/user_language/get_know_languages/";
+    }
+
+    public static String getProficientLanguages() {
+        return getBase() + "api/user_language/get_proficient_languages/";
+    }
+
+    public static String getLearningLanguages() {
+        return getBase() + "api/user_language/get_learning_languages/";
     }
 }
