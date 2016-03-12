@@ -31,6 +31,8 @@ public class HomeActivity extends ActivityBase {
         setContentView(R.layout.activity_home);
         setupLayouts();
 
+        preferences.firstTimeLoggedIn();
+
         requestData();
         refreshView();
     }
@@ -98,6 +100,7 @@ public class HomeActivity extends ActivityBase {
             } else {
                 learnRight.addView(view);
             }
+            position++;
         }
     }
 }

@@ -27,6 +27,8 @@ public class Preferences extends PreferenceManager {
         public static final String PASSWORD = "PASSWORD";
         public static final String DOMAIN = "DOMAIN";
         public static final String PHONE_NUMBER = "PHONE_NUMBER";
+        public static final String FIRST_TIME_LOGIN = "FIRST_TIME_LOGIN";
+        public static final String SERVER_USER_ID = "SERVER_USER_ID";
     }
 
     public void save(String userId, String username, String password, String domain) {
@@ -65,6 +67,18 @@ public class Preferences extends PreferenceManager {
 
     public String getPassword() {
         return load(Keys.PASSWORD, "");
+    }
+
+    public Boolean isLoggedIn() {
+        return !load(Preferences.Keys.AUTH_TOKEN).isEmpty();
+    }
+
+    public Boolean isFirstTimeLogin() {
+        return load(Keys.FIRST_TIME_LOGIN, true);
+    }
+
+    public void firstTimeLoggedIn() {
+        save(Keys.FIRST_TIME_LOGIN, false);
     }
 
 }

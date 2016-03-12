@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context="com.tch.lingoine.activities.LanguageChooser">
 
     <include layout="@layout/toolbar"/>
@@ -88,11 +88,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="User Information"
-            android:textAllCaps="true"
+            android:text="You Login Information"
             android:textColor="@color/tertiaryText"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -103,6 +102,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="100dp"
                 android:padding="8dp"
                 android:text="Username"
                 android:textColor="@color/tertiaryText"
@@ -115,6 +115,7 @@
                 android:layout_weight="1"
                 android:padding="8dp"
                 android:textColor="@color/secondaryText"
+                android:textIsSelectable="true"
                 android:textSize="18sp"/>
         </LinearLayout>
 
@@ -127,6 +128,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="100dp"
                 android:padding="8dp"
                 android:text="Password"
                 android:textColor="@color/tertiaryText"
@@ -139,6 +141,7 @@
                 android:layout_weight="1"
                 android:padding="8dp"
                 android:textColor="@color/secondaryText"
+                android:textIsSelectable="true"
                 android:textSize="18sp"/>
         </LinearLayout>
 
@@ -151,6 +154,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="100dp"
                 android:padding="8dp"
                 android:text="Domain"
                 android:textColor="@color/tertiaryText"

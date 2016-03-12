@@ -10,6 +10,7 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.github.bijoysingh.starter.Functions;
 import com.github.bijoysingh.starter.server.AccessItem;
 import com.github.bijoysingh.starter.util.FileManager;
 import com.tch.lingoine.R;
@@ -116,6 +117,7 @@ public class LanguageChooser extends ActivityBase {
             final Integer id = item.id;
             CheckBox checkBox = new CheckBox(context);
             checkBox.setText(item.language);
+            checkBox.setTextSize(18);
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -131,7 +133,7 @@ public class LanguageChooser extends ActivityBase {
     }
 
     public void sendInformation() {
-        String[] languagesArray = new String[languagesSelected.size()];
+        Integer[] languagesArray = new Integer[languagesSelected.size()];
         languagesSelected.toArray(languagesArray);
         Map<String, Object> map = new HashMap<>();
         map.put("languages", languagesArray);

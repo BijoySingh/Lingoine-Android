@@ -7,6 +7,7 @@ import com.android.volley.VolleyError;
 import com.github.bijoysingh.starter.server.AccessItem;
 import com.github.bijoysingh.starter.server.AccessManager;
 import com.github.bijoysingh.starter.util.FileManager;
+import com.tch.lingoine.activities.HomeActivity;
 import com.tch.lingoine.activities.LanguageChooser;
 import com.tch.lingoine.activities.LoginActivity;
 import com.tch.lingoine.utils.Preferences;
@@ -47,7 +48,7 @@ public class Access extends AccessManager {
             } else if (access.type.equals(AccessIds.GET_LANGUAGE_KNOWN)
                 || access.type.equals(AccessIds.GET_LANGUAGE_LEARNING)
                 || access.type.equals(AccessIds.GET_LANGUAGE_PROFICIENT)) {
-                ((LanguageChooser) access.activity).refreshView();
+                ((HomeActivity) access.activity).refreshView();
             }
         }
     }
@@ -78,7 +79,7 @@ public class Access extends AccessManager {
             String message = new String(volleyError.networkResponse.data);
             Log.e(Access.class.getSimpleName(), "SERVER_ERROR <" + message + ">");
         } catch (Exception exception) {
-            Log.e(Access.class.getSimpleName(), exception.getMessage(), exception);
+            Log.e(Access.class.getSimpleName(), volleyError.getMessage(), volleyError);
         }
     }
 

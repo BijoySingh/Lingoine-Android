@@ -18,6 +18,7 @@ import com.tch.lingoine.R;
 import com.tch.lingoine.server.Access;
 import com.tch.lingoine.server.AccessIds;
 import com.tch.lingoine.server.Links;
+import com.tch.lingoine.utils.Preferences;
 
 import org.json.JSONObject;
 
@@ -36,6 +37,18 @@ public class LoginActivity extends ActivityBase {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        if (preferences.isLoggedIn() && preferences.isFirstTimeLogin()) {
+            // openHomeActivity();
+            Intent languages = new Intent(context, LanguageChooser.class);
+            languages.putExtra(LanguageChooser.CHOOSE_TYPE, LanguageChooser.KNOWN_LANGUAGES);
+            startActivity(languages);
+            finish();
+            return;
+        } else if (preferences.isLoggedIn()) {
+            openHomeActivity();
+            return;
+        }
+
         login = (Button) findViewById(R.id.login_button);
         signUp = (Button) findViewById(R.id.new_user);
         username = (EditText) findViewById(R.id.username);
@@ -51,6 +64,18 @@ public class LoginActivity extends ActivityBase {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startDialog();
+                if (preferences.getUsername().isEmpty()) {
+                    String uname = username.getText().toString();
+                    if (uname.contains("@")) {
+                        Integer position = uname.indexOf("@");
+                        preferences.save(uname.substring(0, position),
+                            uname.substring(0, position),
+                            password.getText().toString(),
+                            uname.substring(position + 1));
+                    }
+                }
+
                 KandyRecord kandyRecord;
                 try {
                     kandyRecord = new KandyRecord(username.getText().toString());
@@ -84,6 +109,22 @@ public class LoginActivity extends ActivityBase {
 
     public void handleResponse(JSONObject response) {
         Log.d("LOGIN", response.toString());
+        try {
+            if (response.has("token")) {
+                preferences.save(Preferences.Keys.AUTH_TOKEN, response.getString("token"));
+                preferences.save(Preferences.Keys.SERVER_USER_ID, response.getString("uid"));
+                openHomeActivity();
+            }
+        } catch (Exception e) {
+            Log.d("LOGIN", "Failed");
+            Functions.makeToast(context, "Your login failed.");
+        }
+    }
+
+    public void openHomeActivity() {
+        Intent home = new Intent(context, HomeActivity.class);
+        startActivity(home);
+        finish();
     }
 
     public void startDialog() {
@@ -92,8 +133,8 @@ public class LoginActivity extends ActivityBase {
     }
 
     public void startServerLogin() {
-        startDialog();
         Map<String, Object> authMap = new HashMap<>();
+
         authMap.put("username", preferences.getUsername());
         Access access = new Access(context);
         access.send(new AccessItem(Links.getLogin(), null,

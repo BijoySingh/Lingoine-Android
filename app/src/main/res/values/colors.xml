@@ -7,10 +7,11 @@
     <color name="hintText">#65000000</color>
     <color name="white">#FFFFFF</color>
     <color name="whiteHint">#DAFFFFFF</color>
+    <color name="whiteStatusBar">#BABABA</color>
 
 
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#1976D2</color>
+    <color name="colorPrimaryDark">#1565C0</color>
     <color name="colorAccent">#1976D2</color>
     <color name="colorAccentDark">#1565C0</color>
 

@@ -64,6 +64,10 @@ public class SignupActivity extends ActivityBase {
 
         TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         countryCode = tm.getSimCountryIso().toUpperCase();
+        if (countryCode.isEmpty()) {
+            countryCode = "IN";
+        }
+
         country.setText(countryCode);
 
         setupView();

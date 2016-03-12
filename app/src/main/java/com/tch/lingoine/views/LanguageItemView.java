@@ -53,7 +53,7 @@ public class LanguageItemView extends LinearLayout {
 
     public LanguageItemView setLanguage(LanguageItem item) {
         name.setText(item.language);
-        shortName.setText(item.language.charAt(0));
+        shortName.setText(item.language);
         return this;
     }
 

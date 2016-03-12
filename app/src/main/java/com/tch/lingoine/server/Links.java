@@ -6,7 +6,7 @@ package com.tch.lingoine.server;
  */
 public class Links {
     public static String getBase() {
-        return "http://10.196.31.204:8000/";
+        return "http://lingoine.thecodershub.com/";
     }
 
     public static String getLogin() {
