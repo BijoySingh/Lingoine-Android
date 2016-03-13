@@ -57,6 +57,7 @@ public class LanguageChooser extends ActivityBase {
         requestData();
         refreshView();
         setNextButton();
+        setToolbar();
     }
 
     public void setNextButton() {

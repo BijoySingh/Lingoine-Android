@@ -57,6 +57,7 @@ public class LoginActivity extends ActivityBase {
         username.setText(preferences.getCompleteUsername());
         password.setText(preferences.getPassword());
         setupButtons();
+        setToolbar();
     }
 
 

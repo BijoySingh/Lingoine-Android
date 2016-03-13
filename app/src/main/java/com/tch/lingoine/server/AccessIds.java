@@ -13,5 +13,7 @@ public class AccessIds {
     public static final Integer GET_LANGUAGE_KNOWN = 5;
     public static final Integer GET_LANGUAGE_PROFICIENT = 6;
     public static final Integer GET_LANGUAGE_LEARNING = 7;
+    public static final Integer GET_LANGUAGE_USER = 8;
+    public static final Integer GET_LANGUAGE_USER_CHAT = 9;
 
 }

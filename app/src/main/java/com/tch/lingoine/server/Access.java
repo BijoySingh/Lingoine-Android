@@ -49,6 +49,10 @@ public class Access extends AccessManager {
                 || access.type.equals(AccessIds.GET_LANGUAGE_LEARNING)
                 || access.type.equals(AccessIds.GET_LANGUAGE_PROFICIENT)) {
                 ((HomeActivity) access.activity).refreshView();
+            } else if (access.type.equals(AccessIds.GET_LANGUAGE_USER)) {
+                ((HomeActivity) access.activity).handleCallResponse(response, AccessIds.GET_LANGUAGE_USER);
+            } else if (access.type.equals(AccessIds.GET_LANGUAGE_USER_CHAT)) {
+                ((HomeActivity) access.activity).handleCallResponse(response, AccessIds.GET_LANGUAGE_USER_CHAT);
             }
         }
     }

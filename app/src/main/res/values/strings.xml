@@ -1,3 +1,72 @@
 <resources>
     <string name="app_name">lingoine</string>
+
+    <string name="activity_calls_local_video_label">Local video</string>
+    <string name="activity_calls_checkbox_label">Start with video</string>
+    <string name="activity_calls_pstn_checkbox_label">Start PSTN call</string>
+    <string name="activity_calls_sip_trunk_checkbox_label">Start call trough SIP Trunk</string>
+    <string name="activity_calls_state_video_label">Video state</string>
+    <string name="activity_calls_state_audio_label">Audio state</string>
+    <string name="activity_calls_state_calls_label">Calls state</string>
+    <string name="activity_calls_hold_label">Hold</string>
+    <string name="activity_calls_unhold_label">Unhold</string>
+    <string name="activity_calls_mute_label">Mute</string>
+    <string name="activity_calls_unmute_label">Unmute</string>
+    <string name="activity_calls_video_label">Video</string>
+    <string name="activity_calls_novideo_label">No Video</string>
+    <string name="activity_calls_call_button_label">Call</string>
+    <string name="activity_calls_hangup_button_label">Hangup</string>
+    <string name="activity_calls_receiving_video_state">Receiving video:</string>
+    <string name="activity_calls_sending_video_state">Sending video:</string>
+    <string name="activity_calls_audio_state">Audio isMute:</string>
+    <string name="activity_calls_phone_number_hint">userID@domain.com</string>
+    <string name="activity_calls_invalid_phone_text_msg">Invalid recipient (recipientID@domain.com)</string>
+    <string name="activity_calls_invalid_domain_text_msg">Wrong domain</string>
+    <string name="activity_calls_invalid_hangup_text_msg">No active calls</string>
+    <string name="activity_calls_invalid_hold_text_msg">Can not hold - No Active Call</string>
+    <string name="activity_calls_invalid_mute_call_text_msg">Can not mute - No active calls</string>
+    <string name="activity_calls_invalid_video_call_text_msg">Can not enable/disable video - No active calls</string>
+    <string name="activity_calls_attention_title_text">!!! ATTENTION !!!</string>
+    <string name="activity_calls_full_user_id_message_text">Enter full destination user id (userID@domain.com)</string>
+    <string name="activity_calls_answer_button_label">Answer</string>
+    <string name="activity_calls_ignore_incoming_call_button_label">Ignore</string>
+    <string name="activity_calls_reject_incoming_call_button_label">Reject</string>
+    <string name="activity_calls_incoming_call_popup_message_label">Incoming call from:</string>
+    <string name="activity_calls_remote_video_label">Remote video</string>
+    <string name="activity_call_remote_camera_view_lable">Remote</string>
+    <string name="activity_call_local_camera_view_lable">Local</string>
+    <string name="activity_chat_phone_number_verification_text">Invalid recipient\'s number (recipientID@domain.com)</string>
+
+    <string name="activity_chat_pull_label">Pull</string>
+    <string name="activity_chatsend_sms_label">Send SMS</string>
+    <string name="activity_chat_sms_label">Will send SMS via Kandy services</string>
+    <string name="activity_chat_pull_desc">Will refresh pending messages from Kandy services</string>
+    <string name="activity_chat_ack_label">Mark message as received</string>
+    <string name="activity_chat_send_button_label">Send</string>
+    <string name="activity_cahts_message_invalid_title">Invalid SMS</string>
+    <string name="activity_cahts_message_empty_message">Please enter message text to be sent</string>
+    <string name="activity_cahts_message_invalid_phone">Invalid phone number, The phone number must be an E164 formatted number</string>
+    <string name="activity_chats_message_click_menu_title">Message Action:</string>
+    <string name="activity_chats_message_click_menu_view">View message</string>
+    <string name="activity_chats_message_click_menu_ack">Mark as received</string>
+    <string name="activity_chats_message_click_menu_cancel">Dismiss</string>
+    <string name="activity_chats_message_click_menu_cancel_download">Cancel Download</string>
+    <string name="activity_cahts_message_sent_label">Message sent</string>
+    <string name="activity_chat_phone_number_domain_verification_text">Invalid recipient, please enter username with domain(userID@domain.com)</string>
+    <string name="activity_chat_phone_number_hint_text">recipient@domain.com</string>
+    <string name="activity_chat_message_hint_text">Message</string>
+    <string name="ui_message_listview_item_sender">Received From:</string>
+    <string name="ui_message_listview_item_recipient">Sent To:</string>
+    <string name="ui_message_listview_item_message">Message:</string>
+
+    <string name="ui_dialog_cancel_button_label">Cancel</string>
+    <string name="msg_uploading_video">Uploading video file</string>
+    <string name="msg_uploading_audio">Uploading audio file</string>
+    <string name="msg_uploading_contact">Uploading contact vCard</string>
+    <string name="msg_uploading_image">Uploading image file</string>
+    <string name="msg_upload_succeed">Upload succeed</string>
+
+    <string name="msg_pull_events">Pulling pending events...</string>
+    <string name="msg_pull_events_succeed">Pulling pending events succeed</string>
+
 </resources>

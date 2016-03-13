@@ -16,4 +16,5 @@
     <color name="colorAccentDark">#1565C0</color>
 
     <color name="toolbarSeparator">#11000000</color>
+    <color name="activity_call_camera_view_lable_background">#20000000</color>
 </resources>

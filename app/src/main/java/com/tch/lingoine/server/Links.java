@@ -40,4 +40,8 @@ public class Links {
     public static String getLearningLanguages() {
         return getBase() + "api/user_language/get_learning_languages/";
     }
+
+    public static String getUserForLanguage(Integer id) {
+        return getBase() + "api/language/" + id + "/get_known_user/";
+    }
 }
